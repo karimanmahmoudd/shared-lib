@@ -21,7 +21,7 @@ pipeline {
     stages {
         stage("check scm") {
             steps {
-                git branch: 'main', url: 'https://github.com/user/repo.git'
+                git branch: 'main', url: 'https://github.com/karimanmahmoudd/shared-lib.git'
                 dir('java-app') {
                     sh 'mvn clean package install'
                 }
@@ -65,3 +65,4 @@ pipeline {
     }
 
 }
+
