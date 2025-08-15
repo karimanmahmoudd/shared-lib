@@ -19,6 +19,15 @@ pipeline {
     GITOPS_FILE   = 'deployment.yaml'
     }
     stages {
+        stage("check scm") {
+            steps {
+                git branch: 'main', url: 'https://github.com/user/repo.git'
+                dir('java-app') {
+                    sh 'mvn clean package install'
+                }
+            }
+        }
+        
         stage('Build') {
             steps {
                 script {
@@ -54,4 +63,5 @@ pipeline {
             }
         }
     }
+
 }
